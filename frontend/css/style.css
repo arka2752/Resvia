@@ -1,0 +1,434 @@
+/* Main Styles for Hotel Booking AI Agent */
+
+:root {
+    --primary-color: #937DC2;
+    --secondary-color: #C689C6;
+    --accent-color: #E8A0BF;
+    --text-color: #2C3E50;
+    --light-bg: #F5F5F5;
+    --white: #FFF2F2;
+    --white-alt: #F4F9F9;
+    --blue-primary: #7286D3;
+    --blue-secondary: #8EA7E9;
+    --blue-accent: #6499E9;
+    --success: #27AE60;
+    --danger: #E74C3C;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
+    color: var(--text-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+/* Agent Avatar Styles */
+.agent-avatar {
+    position: relative;
+    display: inline-block;
+}
+
+.status-badge {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+}
+
+.status-badge.online {
+    background-color: var(--success);
+}
+
+.status-badge.offline {
+    background-color: var(--danger);
+}
+
+/* Chat Container Styles */
+.chat-container {
+    height: 500px;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: 0.25rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--secondary-color) transparent;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background-color: var(--secondary-color);
+    border-radius: 3px;
+}
+
+/* Login Required Message Styles */
+#loginRequired {
+    background-color: var(--white);
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 400px;
+}
+
+#loginRequired i {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+#loginRequired h4 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+#loginRequired p {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Message Styles */
+.message {
+    margin-bottom: 1.5rem;
+    max-width: 85%;
+    clear: both;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: messageAppear 0.3s ease forwards;
+    background-color: var(--white);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes messageAppear {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bot-message {
+    float: left;
+}
+
+.user-message {
+    float: right;
+}
+
+.message-content {
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.message-header img {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bot-message .message-content {
+    background-color: var(--white-alt);
+    border-bottom-left-radius: 0.25rem;
+    margin-left: 2.5rem;
+}
+
+.user-message .message-content {
+    background-color: var(--blue-secondary);
+    color: var(--white);
+    border-bottom-right-radius: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+.user-message .message-header {
+    justify-content: flex-end;
+    margin-right: 0.5rem;
+}
+
+.message p {
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.message-timestamp {
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+    text-align: right;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--white-alt);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.typing-indicator span {
+    height: 0.5rem;
+    width: 0.5rem;
+    float: left;
+    margin: 0 1px;
+    background-color: var(--secondary-color);
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: typing 1s infinite;
+}
+
+.typing-indicator span:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+.typing-indicator span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-of-type(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+}
+
+/* Form Styles */
+#chatForm {
+    margin-top: 1rem;
+}
+
+#userInput {
+    border-radius: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    border: 1px solid #ced4da;
+}
+
+#chatForm button {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Booking Summary Styles */
+#bookingSummary {
+    min-height: 200px;
+}
+
+.booking-detail {
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--white-alt);
+}
+
+.booking-detail:last-child {
+    border-bottom: none;
+}
+
+.booking-label {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Hotel Card Styles */
+.hotel-card {
+    border: 1px solid var(--white-alt);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--white);
+}
+
+.hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-card img {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.hotel-card .card-body {
+    padding: 1rem;
+}
+
+.hotel-price {
+    font-weight: 700;
+    color: var(--blue-primary);
+    font-size: 1.2rem;
+}
+
+
+.hotel-rating {
+    background-color: var(--blue-primary);
+    color: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .message {
+        max-width: 90%;
+    }
+    
+    .chat-container {
+        height: 350px;
+    }
+}
+
+/* Animation for new messages */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading Spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 1rem auto;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Highlight for selected hotels */
+.selected-hotel {
+    border: 2px solid var(--blue-primary);
+    box-shadow: 0 0 10px rgba(114, 134, 211, 0.3);
+}
+
+/* Button styles */
+.btn-booking {
+    background-color: var(--blue-primary);
+    border-color: var(--blue-primary);
+    color: var(--white);
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-booking:hover {
+    background-color: var(--blue-secondary);
+    border-color: var(--blue-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Account Page Styles */
+.avatar-circle {
+    width: 100px;
+    height: 100px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.initials {
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* Form transitions */
+#loginForm, #registerForm, #userProfile {
+    transition: all 0.3s ease;
+}
+
+/* Active nav button */
+.btn.active {
+    background-color: var(--blue-primary);
+    color: var(--white);
+}
+
+/* List group item hover effect */
+.list-group-item-action:hover {
+    background-color: var(--white-alt);
+    transform: translateX(5px);
+    transition: transform 0.2s ease;
+}
+
+/* Profile section styles */
+#userProfile h5 {
+    color: var(--blue-primary);
+    margin-bottom: 0.25rem;
+}
+
+#userProfile .text-muted {
+    font-size: 0.9rem;
+}
+
+/* Form validation styles */
+.form-control:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.25rem rgba(147, 125, 194, 0.25);
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}

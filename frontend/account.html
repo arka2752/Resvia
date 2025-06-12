@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - Hotel Booking AI Agent</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <!-- Header Section -->
+        <header class="p-3" style="background-color: var(--primary-color);">
+            <div class="container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1 class="mb-0"><a href="./index.html" class="text-white text-decoration-none">BookingBot</a></h1>
+                    <div>
+                        <a href="./index.html" class="btn me-2" style="border: 1px solid var(--white); color: var(--white);"><i class="fas fa-home"></i> Home</a>
+                        <button class="btn active" style="background-color: var(--white); color: var(--primary-color);"><i class="fas fa-user"></i> Account</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container my-4">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card shadow">
+                        <div class="card-header bg-white">
+                            <h3 class="card-title">My Account</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- Account Login Form -->
+                            <div id="loginForm">
+                                <h4 class="mb-4">Sign In</h4>
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="password" required>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="rememberMe">
+                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    </div>
+                                    <button type="submit" class="btn" style="background-color: var(--blue-primary); color: var(--white);">Sign In</button>
+                                    <button type="button" class="btn btn-link" id="showRegisterForm">Create an account</button>
+                                </form>
+                            </div>
+
+                            <!-- Account Registration Form -->
+                            <div id="registerForm" style="display: none;">
+                                <h4 class="mb-4">Create an Account</h4>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="firstName" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="firstName" required>
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="lastName" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" placeholder="+1234567890" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="address" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="city" class="form-label">City</label>
+                                            <input type="text" class="form-control" id="city" required>
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="state" class="form-label">State</label>
+                                            <input type="text" class="form-control" id="state">
+                                        </div>
+                                        <div class="col-md-3 mb-3">
+                                            <label for="zipCode" class="form-label">ZIP Code</label>
+                                            <input type="text" class="form-control" id="zipCode" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="country" class="form-label">Country</label>
+                                        <select class="form-select" id="country" required>
+                                            <option value="">Select a country</option>
+                                            <option value="US">United States</option>
+                                            <option value="GB">United Kingdom</option>
+                                            <option value="CA">Canada</option>
+                                            <!-- Add more countries as needed -->
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerPassword" class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="registerPassword" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirmPassword" required>
+                                    </div>
+                                    
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="termsAgree" required>
+                                        <label class="form-check-label" for="termsAgree">I agree to the Terms and Conditions</label>
+                                    </div>
+                                    <button type="submit" class="btn" style="background-color: var(--blue-primary); color: var(--white);">Create Account</button>
+                                    <button type="button" class="btn btn-link" id="showLoginForm">Already have an account? Sign in</button>
+                                </form>
+                            </div>
+
+                            <!-- User Profile (Hidden by default) -->
+                            <div id="userProfile" style="display: none;">
+                                <h4 class="mb-4">My Profile</h4>
+                                <div class="row mb-4">
+                                    <div class="col-md-3 text-center">
+                                        <div class="avatar-circle mx-auto mb-3">
+                                            <span class="initials">JD</span>
+                                        </div>
+                                        <button class="btn btn-sm" style="border: 1px solid var(--blue-primary); color: var(--blue-primary);">Change Photo</button>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h5 id="profileName">John Doe</h5>
+                                        <p class="text-muted" id="profileEmail">john.doe@example.com</p>
+                                        <p class="text-muted">Member since: <span id="memberSince">January 2023</span></p>
+                                    </div>
+                                </div>
+
+                                <h5>My Bookings</h5>
+                                <div class="list-group mb-4">
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Grand Hotel New York</h6>
+                                            <small class="text-success">Confirmed</small>
+                                        </div>
+                                        <p class="mb-1">May 15, 2023 - May 18, 2023</p>
+                                        <small class="text-muted">Booking reference: BOK123456</small>
+                                    </div>
+                                    <div class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Paris Plaza Hotel</h6>
+                                            <small class="text-secondary">Completed</small>
+                                        </div>
+                                        <p class="mb-1">March 10, 2023 - March 15, 2023</p>
+                                        <small class="text-muted">Booking reference: BOK789012</small>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button class="btn" style="border: 1px solid var(--blue-primary); color: var(--blue-primary);">Edit Profile</button>
+                                    <button class="btn" style="border: 1px solid var(--danger); color: var(--danger);" id="logoutButton">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>BookingBot AI Agent</h5>
+                        <p>Your personal AI assistant for hotel bookings on Booking.com</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>&copy; 2023 BookingBot. All rights reserved.</p>
+                        <p>Powered by Vercel</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./js/account.js"></script>
+</body>
+</html>
