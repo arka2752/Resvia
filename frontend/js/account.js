@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Login form submission
     const loginFormElement = document.querySelector('#loginForm form');
     if (loginFormElement) {
-        loginFormElement.addEventListener('submit', function(e) {
+        loginFormElement.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form values
@@ -38,59 +38,82 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('password').value;
             const rememberMe = document.getElementById('rememberMe').checked;
             
-            // In a real app, you would validate and send to backend
-            // For demo, we'll just simulate a successful login
-            const userData = {
-                name: 'John Doe', // In a real app, this would come from the backend
-                email: email,
-                memberSince: 'January 2023',
-                isLoggedIn: true
-            };
-            
-            // Save to localStorage if remember me is checked
-            if (rememberMe) {
-                localStorage.setItem('userData', JSON.stringify(userData));
-            } else {
-                // Use sessionStorage if not remember me
-                sessionStorage.setItem('userData', JSON.stringify(userData));
+            try {
+                const response = await fetch('http://localhost:5000/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert(data.message);
+                    if (rememberMe) {
+                        localStorage.setItem('userData', JSON.stringify(data.user));
+                    } else {
+                        sessionStorage.setItem('userData', JSON.stringify(data.user));
+                    }
+                    showUserProfile(data.user);
+                } else {
+                    alert(data.error || 'Login failed.');
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('An error occurred during login. Please try again.');
             }
-            
-            // Show profile
-            showUserProfile(userData);
         });
     }
     
     // Register form submission
     const registerFormElement = document.querySelector('#registerForm form');
     if (registerFormElement) {
-        registerFormElement.addEventListener('submit', function(e) {
+        registerFormElement.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Get form values
-            const fullName = document.getElementById('fullName').value;
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
             
-            // In a real app, you would validate and send to backend
-            // For demo, we'll just simulate a successful registration
             if (password !== confirmPassword) {
                 alert('Passwords do not match!');
                 return;
             }
             
-            const userData = {
-                name: fullName,
-                email: email,
-                memberSince: getCurrentDate(),
-                isLoggedIn: true
-            };
-            
-            // Save to localStorage
-            localStorage.setItem('userData', JSON.stringify(userData));
-            
-            // Show profile
-            showUserProfile(userData);
+            try {
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        email,
+                        password
+                    })
+                });
+                
+                const data = await response.json();
+                if (response.ok) {
+                    alert(data.message);
+                    // After successful registration, show login form
+                    registerForm.style.display = 'none';
+                    loginForm.style.display = 'block';
+                    // Optionally clear register form fields
+                    document.querySelector('#registerForm form').reset();
+                } else {
+                    alert(data.error || 'Registration failed.');
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('An error occurred during registration. Please try again.');
+            }
         });
     }
     

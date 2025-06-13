@@ -159,6 +159,77 @@ def get_hotel_offers():
     except Exception as e:
         return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
 
+@app.route('/api/register', methods=['POST'])
+def register():
+    try:
+        data = request.json
+        if not data:
+            logger.error("No data provided for registration")
+            return jsonify({'error': 'No data provided'}), 400
+        
+        required_fields = ['email', 'password', 'firstName', 'lastName']
+        missing_fields = [field for field in required_fields if field not in data]
+        if missing_fields:
+            logger.error(f"Missing required fields for registration: {', '.join(missing_fields)}")
+            return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
+        
+        # In a real app, you would:
+        # 1. Hash the password before saving
+        # 2. Save user data to a database
+        # 3. Check for existing users with the same email
+        
+        # For this demo, we'll just return a success message and user data
+        user_data = {
+            'name': f"{data['firstName']} {data['lastName']}",
+            'email': data['email'],
+            'memberSince': 'Today' # In a real app, this would be the actual registration date
+        }
+        
+        logger.debug(f"User registered: {user_data['email']}")
+        return jsonify({
+            'status': 'success',
+            'message': 'Account created successfully!',
+            'user': user_data
+        }), 201 # 201 Created
+    except Exception as e:
+        logger.error(f"Error in register endpoint: {str(e)}")
+        return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    try:
+        data = request.json
+        if not data:
+            logger.error("No data provided for login")
+            return jsonify({'error': 'No data provided'}), 400
+        
+        required_fields = ['email', 'password']
+        missing_fields = [field for field in required_fields if field not in data]
+        if missing_fields:
+            logger.error(f"Missing required fields for login: {', '.join(missing_fields)}")
+            return jsonify({'error': f'Missing required fields: {", ".join(missing_fields)}'}), 400
+        
+        # For this demo, we'll simulate a successful login for any valid input
+        user_email = data['email']
+        # user_password = data['password'] # Not used for validation in this demo
+
+        # Simulate a successful login for any email/password pair
+        user_data = {
+            'name': user_email.split('@')[0].replace('.', ' ').title(), # Use part before @ as name, capitalize words
+            'email': user_email,
+            'memberSince': 'Today',
+            'isLoggedIn': True
+        }
+        logger.debug(f"User logged in (simulated): {user_data['email']}")
+        return jsonify({
+            'status': 'success',
+            'message': 'Logged in successfully!',
+            'user': user_data
+        })
+    except Exception as e:
+        logger.error(f"Error in login endpoint: {str(e)}")
+        return jsonify({'error': f'An unexpected error occurred: {str(e)}'}), 500
+
 # Add a health check endpoint
 @app.route('/api/health', methods=['GET'])
 def health_check():
@@ -173,6 +244,10 @@ def test():
         'status': 'ok',
         'message': 'Backend is working!'
     })
+
+@app.route('/')
+def home():
+    return "Backend is running!"
 
 if __name__ == '__main__':
     app.run(debug=True) 

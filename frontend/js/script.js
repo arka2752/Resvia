@@ -197,4 +197,53 @@ document.addEventListener('DOMContentLoaded', function () {
             throw error;
         }
     }
+
+    // Register form submission
+    const registerFormElement = document.querySelector('#registerForm form');
+    if (registerFormElement) {
+        registerFormElement.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const fullName = firstName + ' ' + lastName;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        firstName,
+                        lastName,
+                        fullName,
+                        email,
+                        password
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.status === 'success') {
+                    alert('Account created successfully!');
+                    // After successful registration
+                    registerForm.style.display = 'none';
+                    loginForm.style.display = 'block';
+                } else {
+                    alert(data.error || 'Registration failed.');
+                }
+            } catch (error) {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    }
 });
