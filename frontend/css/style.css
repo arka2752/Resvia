@@ -3,10 +3,10 @@
 :root {
     --primary-color: #937DC2;
     --secondary-color: #C689C6;
-    --accent-color: #E8A0BF;
-    --text-color: #2C3E50;
-    --light-bg: #F5F5F5;
-    --white: #FFF2F2;
+    --accent-color: #937DC2;
+    --text-color: #333333;
+    --light-bg: #f8f9fa;
+    --white: #ffffff;
     --white-alt: #F4F9F9;
     --blue-primary: #7286D3;
     --blue-secondary: #8EA7E9;
@@ -42,8 +42,8 @@ header h1 {
 
 .status-badge {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
+    bottom: 0;
+    right: 0;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -51,7 +51,7 @@ header h1 {
 }
 
 .status-badge.online {
-    background-color: var(--success);
+    background-color: #28a745;
 }
 
 .status-badge.offline {
@@ -60,13 +60,9 @@ header h1 {
 
 /* Chat Container Styles */
 .chat-container {
-    height: 500px;
+    height: 600px;
     overflow-y: auto;
-    padding: 1rem;
-    background-color: var(--white);
-    border-radius: 0.25rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--secondary-color) transparent;
+    padding: 20px;
 }
 
 .chat-container::-webkit-scrollbar {
@@ -108,8 +104,8 @@ header h1 {
 
 /* Message Styles */
 .message {
-    margin-bottom: 1.5rem;
-    max-width: 85%;
+    margin-bottom: 20px;
+    max-width: 80%;
     clear: both;
     opacity: 0;
     transform: translateY(20px);
@@ -117,7 +113,7 @@ header h1 {
     background-color: var(--white);
     border-radius: 1rem;
     padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 @keyframes messageAppear {
@@ -128,18 +124,18 @@ header h1 {
 }
 
 .bot-message {
-    float: left;
+    margin-right: auto;
 }
 
 .user-message {
-    float: right;
+    margin-left: auto;
 }
 
 .message-content {
-    padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .message-header {
@@ -154,16 +150,12 @@ header h1 {
 }
 
 .bot-message .message-content {
-    background-color: var(--white-alt);
-    border-bottom-left-radius: 0.25rem;
-    margin-left: 2.5rem;
+    background-color: var(--accent-color);
+    color: var(--white);
 }
 
 .user-message .message-content {
-    background-color: var(--blue-secondary);
-    color: var(--white);
-    border-bottom-right-radius: 0.25rem;
-    margin-right: 0.5rem;
+    background-color: var(--light-bg);
 }
 
 .user-message .message-header {
@@ -221,10 +213,12 @@ header h1 {
         opacity: 0.4;
         transform: scale(1);
     }
+
     50% {
         opacity: 1;
         transform: scale(1.2);
     }
+
     100% {
         opacity: 0.4;
         transform: scale(1);
@@ -314,19 +308,26 @@ header h1 {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .chat-container {
+        height: 400px;
+    }
+
     .message {
         max-width: 90%;
-    }
-    
-    .chat-container {
-        height: 350px;
     }
 }
 
 /* Animation for new messages */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .message {
@@ -345,7 +346,9 @@ header h1 {
 }
 
 @keyframes spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Highlight for selected hotels */
@@ -392,7 +395,9 @@ header h1 {
 }
 
 /* Form transitions */
-#loginForm, #registerForm, #userProfile {
+#loginForm,
+#registerForm,
+#userProfile {
     transition: all 0.3s ease;
 }
 
@@ -421,8 +426,8 @@ header h1 {
 
 /* Form validation styles */
 .form-control:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 0 0.25rem rgba(147, 125, 194, 0.25);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(147, 125, 194, 0.25);
 }
 
 .form-control.is-invalid {
@@ -431,4 +436,25 @@ header h1 {
     background-repeat: no-repeat;
     background-position: right calc(0.375em + 0.1875rem) center;
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px 15px 0 0 !important;
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
