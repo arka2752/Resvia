@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const bookingSummary = document.getElementById('bookingSummary');
     const flightSearchForm = document.getElementById('flightSearchForm');
     const hotelSearchForm = document.getElementById('hotelSearchForm');
-    
+
     // API Endpoints
     const API_BASE_URL = 'http://localhost:5000/api';
-    
+
     // Booking state
     let currentBooking = {
         destination: '',
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     flightSearchForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const flightData = {
             origin: document.getElementById('origin').value,
             destination: document.getElementById('destination').value,
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         `Price: ${hotel.offers[0].price.total} ${hotel.offers[0].price.currency}`
                     ).join('\n\n');
                 addMessage(message);
-        } else {
+            } else {
                 addMessage("I couldn't find any hotels matching your criteria. Please try different dates or city.");
             }
         } catch (error) {
@@ -127,9 +127,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const header = document.createElement('div');
             header.className = 'message-header mb-2';
             header.innerHTML = `
-                <img src="https://ui-avatars.com/api/?name=Travel+Bot&background=937DC2&color=fff" 
-                     alt="TravelBot" class="rounded-circle me-2" width="24" height="24">
-                <span class="fw-bold">TravelBot</span>
+                <img src="https://ui-avatars.com/api/?name=Resvia&background=937DC2&color=fff" 
+                     alt="Resvia" class="rounded-circle me-2" width="24" height="24">
+                <span class="fw-bold">Resvia</span>
             `;
             messageContent.appendChild(header);
         }
@@ -201,9 +201,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Register form submission
     const registerFormElement = document.querySelector('#registerForm form');
     if (registerFormElement) {
-        registerFormElement.addEventListener('submit', async function(e) {
+        registerFormElement.addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             // Get form values
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
@@ -211,12 +211,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const email = document.getElementById('registerEmail').value;
             const password = document.getElementById('registerPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            
+
             if (password !== confirmPassword) {
                 alert('Passwords do not match!');
                 return;
             }
-            
+
             try {
                 const response = await fetch('http://localhost:5000/api/register', {
                     method: 'POST',
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         password
                     })
                 });
-                
+
                 const data = await response.json();
                 if (data.status === 'success') {
                     alert('Account created successfully!');

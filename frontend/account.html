@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +12,21 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container-fluid p-0">
         <!-- Header Section -->
         <header class="p-3" style="background-color: var(--primary-color);">
             <div class="container">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1 class="mb-0"><a href="./index.html" class="text-white text-decoration-none">BookingBot</a></h1>
+                    <h1 class="mb-0"><a href="./index.html" class="text-white text-decoration-none">Resvia</a></h1>
                     <div>
-                        <a href="./index.html" class="btn me-2" style="border: 1px solid var(--white); color: var(--white);"><i class="fas fa-home"></i> Home</a>
-                        <button class="btn active" style="background-color: var(--white); color: var(--primary-color);"><i class="fas fa-user"></i> Account</button>
+                        <a href="./index.html" class="btn me-2"
+                            style="border: 1px solid var(--white); color: var(--white);"><i class="fas fa-home"></i>
+                            Home</a>
+                        <button class="btn active"
+                            style="background-color: var(--white); color: var(--primary-color);"><i
+                                class="fas fa-user"></i> Account</button>
                     </div>
                 </div>
             </div>
@@ -41,7 +47,8 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="name@example.com" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
@@ -51,8 +58,11 @@
                                         <input type="checkbox" class="form-check-input" id="rememberMe">
                                         <label class="form-check-label" for="rememberMe">Remember me</label>
                                     </div>
-                                    <button type="submit" class="btn" style="background-color: var(--blue-primary); color: var(--white);">Sign In</button>
-                                    <button type="button" class="btn btn-link" id="showRegisterForm">Create an account</button>
+                                    <button type="submit" class="btn"
+                                        style="background-color: var(--blue-primary); color: var(--white);">Sign
+                                        In</button>
+                                    <button type="button" class="btn btn-link" id="showRegisterForm">Create an
+                                        account</button>
                                 </form>
                             </div>
 
@@ -72,11 +82,13 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="registerEmail" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="registerEmail" placeholder="name@example.com" required>
+                                        <input type="email" class="form-control" id="registerEmail"
+                                            placeholder="name@example.com" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" placeholder="+1234567890" required>
+                                        <input type="tel" class="form-control" id="phone" placeholder="+1234567890"
+                                            required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="address" class="form-label">Address</label>
@@ -114,13 +126,17 @@
                                         <label for="confirmPassword" class="form-label">Confirm Password</label>
                                         <input type="password" class="form-control" id="confirmPassword" required>
                                     </div>
-                                    
+
                                     <div class="mb-3 form-check">
                                         <input type="checkbox" class="form-check-input" id="termsAgree" required>
-                                        <label class="form-check-label" for="termsAgree">I agree to the Terms and Conditions</label>
+                                        <label class="form-check-label" for="termsAgree">I agree to the Terms and
+                                            Conditions</label>
                                     </div>
-                                    <button type="submit" class="btn" style="background-color: var(--blue-primary); color: var(--white);">Create Account</button>
-                                    <button type="button" class="btn btn-link" id="showLoginForm">Already have an account? Sign in</button>
+                                    <button type="submit" class="btn"
+                                        style="background-color: var(--blue-primary); color: var(--white);">Create
+                                        Account</button>
+                                    <button type="button" class="btn btn-link" id="showLoginForm">Already have an
+                                        account? Sign in</button>
                                 </form>
                             </div>
 
@@ -132,38 +148,24 @@
                                         <div class="avatar-circle mx-auto mb-3">
                                             <span class="initials">JD</span>
                                         </div>
-                                        <button class="btn btn-sm" style="border: 1px solid var(--blue-primary); color: var(--blue-primary);">Change Photo</button>
+                                        <button class="btn btn-sm"
+                                            style="border: 1px solid var(--blue-primary); color: var(--blue-primary);">Change
+                                            Photo</button>
                                     </div>
                                     <div class="col-md-9">
                                         <h5 id="profileName">John Doe</h5>
                                         <p class="text-muted" id="profileEmail">john.doe@example.com</p>
-                                        <p class="text-muted">Member since: <span id="memberSince">January 2023</span></p>
-                                    </div>
-                                </div>
-
-                                <h5>My Bookings</h5>
-                                <div class="list-group mb-4">
-                                    <div class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Grand Hotel New York</h6>
-                                            <small class="text-success">Confirmed</small>
-                                        </div>
-                                        <p class="mb-1">May 15, 2023 - May 18, 2023</p>
-                                        <small class="text-muted">Booking reference: BOK123456</small>
-                                    </div>
-                                    <div class="list-group-item list-group-item-action">
-                                        <div class="d-flex w-100 justify-content-between">
-                                            <h6 class="mb-1">Paris Plaza Hotel</h6>
-                                            <small class="text-secondary">Completed</small>
-                                        </div>
-                                        <p class="mb-1">March 10, 2023 - March 15, 2023</p>
-                                        <small class="text-muted">Booking reference: BOK789012</small>
+                                        <p class="text-muted">Member since: <span id="memberSince">January 2023</span>
+                                        </p>
                                     </div>
                                 </div>
 
                                 <div class="d-flex justify-content-between">
-                                    <button class="btn" style="border: 1px solid var(--blue-primary); color: var(--blue-primary);">Edit Profile</button>
-                                    <button class="btn" style="border: 1px solid var(--danger); color: var(--danger);" id="logoutButton">Logout</button>
+                                    <button class="btn"
+                                        style="border: 1px solid var(--blue-primary); color: var(--blue-primary);">Edit
+                                        Profile</button>
+                                    <button class="btn" style="border: 1px solid var(--danger); color: var(--danger);"
+                                        id="logoutButton">Logout</button>
                                 </div>
                             </div>
                         </div>
@@ -177,11 +179,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <h5>BookingBot AI Agent</h5>
+                        <h5>Resvia AI Agent</h5>
                         <p>Your personal AI assistant for hotel bookings on Booking.com</p>
                     </div>
                     <div class="col-md-6 text-md-end">
-                        <p>&copy; 2023 BookingBot. All rights reserved.</p>
+                        <p>&copy; 2023 Resvia. All rights reserved.</p>
                         <p>Powered by Vercel</p>
                     </div>
                 </div>
@@ -194,4 +196,5 @@
     <!-- Custom JS -->
     <script src="./js/account.js"></script>
 </body>
+
 </html>
