@@ -107,8 +107,11 @@ header h1 {
     margin-bottom: 20px;
     max-width: 80%;
     clear: both;
+<<<<<<< HEAD
     
     transform: translateY(20px);
+=======
+>>>>>>> 0369a87d9e6a60f3c6b8aadb1ebda2deb937e4f2
     animation: messageAppear 0.3s ease forwards;
     background-color: var(--white);
     border-radius: 1rem;
