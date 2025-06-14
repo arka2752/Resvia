@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         sessionStorage.setItem('userData', JSON.stringify(data.user));
                     }
-                    showUserProfile(data.user);
+                    // Redirect to the home page after successful login
+                    window.location.href = './index.html'; 
                 } else {
                     alert(data.error || 'Login failed.');
                 }
@@ -142,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (storedUser) {
             const userData = JSON.parse(storedUser);
+            // Ensure isLoggedIn is treated as boolean, not just presence
             if (userData.isLoggedIn) {
                 showUserProfile(userData);
             }
